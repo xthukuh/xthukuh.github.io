@@ -1,0 +1,74 @@
+html {
+	font-size: 12px;
+}
+body {
+	background: #eee;
+	padding: 0;
+	margin: 0;
+	font-family: Helvetica;
+}
+h2, p {
+	margin: 0;
+	padding: 0;
+}
+.wrapper {
+	border: 1px solid #888;
+	display: flex;
+	flex-flow: row;
+	width: 930px;
+	margin: 10px auto;
+	background: #fff;
+	max-height: 522px;
+}
+.canvas-wrapper {
+	padding: 10px;
+	border-right: 1px solid #ddd;
+}
+canvas {
+	border: 1px solid #000;
+	background: #edfaff;
+}
+.control-wrapper {
+	display: flex;
+	flex-flow: column;
+	background-color: #fafafa;
+	flex-grow: 1;
+}
+.control-wrapper h2 {
+	padding: 10px 20px;
+	border-bottom: 1px solid #ddd;
+}
+.control-wrapper #inputs-wrapper {
+	flex-grow: 1;
+	padding: 10px 20px;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+.input-group {
+	margin-top: 5px;
+	display: flex;
+	align-items: center;
+}
+.input-group:last-child {
+	margin-bottom: 10px;
+}
+.input-group label {
+	width: 130px;
+	text-align: right;
+	margin-right: 10px;
+}
+.input-group input {
+	flex-grow: 1;
+}
+.buttons-wrapper {
+	margin-top: 0;
+	border-top: 1px solid #ddd;
+	padding: 10px 20px;
+}
+.button-group button {
+	width: 100px;
+	margin-right: 5px;
+}
+.button-group button:last-child {
+	margin-right: 0;
+}
