@@ -1,24 +1,76 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" translate="no">
 <head>
-	<meta charset="utf-8" />
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>LAB</title>
-	<link rel="stylesheet" href="style.css">
+	<style>
+		@font-face {
+		    font-family: 'Raleway-Light';
+		    src: url('../fonts/Raleway/static/Raleway-Light.ttf') format('truetype');
+		}
+		html {
+			font-size: 14px;
+			font-family: 'Raleway-Light', sans-serif;
+			padding: 0;
+			margin: 0;
+		}
+		body {
+			padding: 0;
+			margin: 0;
+			background-color: #fafafa;
+		}
+		.wrapper {
+			display: block;
+			padding: 10px;
+			background-color: #fff;
+			border: 1px solid #ddd;
+			min-height: 300px;
+		}
+		@media (max-width: 767.98px){
+			.wrapper {
+				width: calc(100% - 40px);
+				margin: 10px;
+			}
+		}
+		@media (min-width: 768px){
+			.wrapper {
+				width: 500px;
+				margin: 10px auto;
+			}
+		}
+		a {
+			text-decoration: none;
+		}
+		a:focus,
+		a:hover {
+			text-decoration: underline;
+		}
+		h2 {
+			margin: 0 0 10px;
+		}
+		p {
+			margin: 0 0 5px;
+		}
+		ul {
+			list-style: disclosure-closed;
+			padding: 10px 0 0 15px;
+			margin: 0;
+			border-top: 1px solid #ddd;
+		}
+		ul > li {
+			margin-bottom: 5px;
+		}
+	</style>
 </head>
 <body>
 	<div class="wrapper">
-		<div class="canvas-wrapper">
-			<canvas id="canvas" width="500" height="500"></canvas>
-		</div>
-		<div class="control-wrapper">
-			<h2>Control</h2>
-			<div id="inputs-wrapper"></div>
-			<div class="buttons-wrapper">
-				<button type="button" id="btn-update" title="Update">Update</button>
-				<button type="button" id="btn-clear" title="Clear">Clear</button>
-			</div>
-		</div>
+		<h2>Lab</h2>
+		<p>My web app/scripts lab.</p>
+		<ul>
+			<li><a href="./game">Game (Canvas Tutorial)</a></li>
+			<li><a href="./mmap">Multiplication Map (Canvas Experiment)</a></li>
+		</ul>
 	</div>
-	<script src="script.js"></script>
 </body>
 </html>

@@ -1,2 +1,2 @@
-# lab
-My Test Lab (Misc apps and scripts)
+# Lab
+My web app/scripts lab.
