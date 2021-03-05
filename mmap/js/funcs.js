@@ -10,7 +10,8 @@ function rad2deg(rad){
 
 //circlical number i.e. cnum(420, 360) = 60
 function cnum(num, max){
-    if (num <= max) return num;
+    if (num < max) return num;
+    if (num == max) return 0;
     return num - (Math.floor(num/max) * max) || max;
 }
 
