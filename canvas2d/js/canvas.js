@@ -208,10 +208,37 @@
 		if (stop) newGame();
 	}
 
+	let btn_left = document.getElementById('btn-left');
+	if (btn_left){
+		btn_left.addEventListener("mousedown", () => leftPressed = true, false);
+		btn_left.addEventListener("mouseup", () => leftPressed = false, false);
+	}
+
+	let btn_right = document.getElementById('btn-right');
+	if (btn_right){
+		btn_right.addEventListener("mousedown", () => rightPressed = true, false);
+		btn_right.addEventListener("mouseup", () => rightPressed = false, false);
+	}
+
+	let btn_reset = document.getElementById('btn-reset');
+	if (btn_reset) btn_reset.addEventListener("click", () => setTimeout(newGame, 10), false);
+
+	let btn_pause = document.getElementById('btn-pause');
+	if (btn_pause) btn_pause.addEventListener("click", () => {
+		setTimeout(() => {
+			console.log('pause', pause);
+			if (pause){
+				pause = 0;
+				draw();
+			}
+			else pause = 1;
+		}, 10);
+	}, false);
+
 	//event listeners (keys)
 	document.addEventListener("keydown", keyDownHandler, false);
 	document.addEventListener("keyup", keyUpHandler, false);
-	document.addEventListener("mousemove", mouseMoveHandler, false);
+	//document.addEventListener("mousemove", mouseMoveHandler, false);
 	document.addEventListener("click", mouseClickHandler, false);
 
 	//draw
