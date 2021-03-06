@@ -17,6 +17,7 @@ h2, p {
 	margin: 0;
 	padding: 0;
 }
+
 .wrapper {
 	min-width: 900px;
 	display: flex;
@@ -25,38 +26,40 @@ h2, p {
 	max-height: 522px;
 	min-height: 100vh;
 }
+
 .canvas-wrapper {
+	flex-grow: 1;
 	border-right: 1px solid #000;
 	width: 100%;
 	overflow: auto;
 	background: #fff;
 }
+
 canvas {
 	margin: 0 auto;
 	display: block;
 }
+
 .control-wrapper {
+	width: 400px;
 	display: flex;
 	flex-flow: column;
 	background-color: #fafafa;
-	flex-grow: 1;
 }
-@media (min-width: 1200px){
-	.control-wrapper {
-		max-height: 1200px;
-		min-width: 600px;
-	}
-}
+
 .control-wrapper h2 {
 	padding: 10px 20px;
 	border-bottom: 1px solid #ddd;
 }
+
 .control-wrapper #inputs-wrapper {
 	flex-grow: 1;
 	padding: 10px 20px;
 	overflow-y: scroll;
 	overflow-x: hidden;
+	max-height: 750px;
 }
+
 .input-group {
 	margin-top: 5px;
 	display: flex;
@@ -73,6 +76,7 @@ canvas {
 .input-group input {
 	flex-grow: 1;
 }
+
 .buttons-wrapper {
 	margin-top: 0;
 	border-top: 1px solid #ddd;

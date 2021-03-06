@@ -7,22 +7,29 @@
 	<meta name="author" content="Martin Thuku @isthuku">
 	<link rel="shortcut icon" type="image/x-icon" href="../assets/images/favicon.ico">
 	<link rel="apple-touch-icon-precomposed" href="../assets/images/icon.png">
-    <title>Thuku's Lab | Canvas 2D Tutorial</title>
+    <title>Thuku's Lab | Canvas 2D Tutorial (Game)</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 	<div class="wrapper">
 		<div class="canvas-wrapper">
-			<canvas id="canvas" width="500" height="500"></canvas>
+			<canvas id="canvas" width="500" height="400"></canvas>
 		</div>
 		<div class="btn-wrapper">
-			<button id="btn-left" type="button" title="Move Left">&lt;</button>
-			<button id="btn-right" type="button" title="Move Right">&gt;</button>
+			<button id="left" type="button" title="Left">&lt;</button>
+			<button id="right" type="button" title="Right">&gt;</button>
 			&nbsp;|&nbsp;
-			<button id="btn-pause" type="button" title="Pause Toggle">Pause</button>
-			<button id="btn-reset" type="button" title="Reset">Reset</button>
+			<button id="pause" type="button" title="Pause/Resume">Pause</button>
+			<button id="reset" type="button" title="Reset">Reset</button>
 		</div>
 	</div>
-	<script src="js/canvas.js"></script>
+	<script src="../assets/js/onPageLoad.js"></script>
+	<script src="../assets/js/onPressEvent.js"></script>
+	<script src="js/info.js"></script>
+	<script src="js/bricks.js"></script>
+	<script src="js/paddle.js"></script>
+	<script src="js/ball.js"></script>
+	<script src="js/inputs.js"></script>
+	<script src="js/game.js"></script>
 </body>
 </html>
