@@ -8,6 +8,14 @@ body {
 	background-color: #f7f9fb;
 }
 
+.no-select {
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+}
+
 .wrapper {
 	display: flex;
 	flex-flow: column;
@@ -34,12 +42,28 @@ body {
 	background-color: #fafafa;
 	padding: 10px;
 }
-.btn-wrapper button {
+button {
+	cursor: pointer;
 	min-height: 36px;
 	min-width: 80px;
 	margin-right: 5px;
+	border: 1px solid #555;
+	background-color: #eee;
 }
-.btn-wrapper button:last-child {
+
+button:focus,
+button:hover {
+	background-color: #ddd;
+	border-color: #555;
+}
+
+button.active,
+button:active {
+	background-color: #ddd;
+	border-color: #555;
+}
+
+button:last-child {
 	margin-right: 0;
 }
 

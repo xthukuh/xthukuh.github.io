@@ -1,12 +1,3 @@
-//get canvas
-const canvas = document.getElementById('canvas');
-const ctx = canvas.getContext('2d');
-
-//clear canvas
-function clearCtx(){
-	ctx.clearRect(0, 0, canvas.width, canvas.height);
-}
-
 //game win
 function gameWin(){
 	status = 2;
@@ -123,6 +114,3 @@ function render(){
 	//next frame
 	requestAnimationFrame(render);
 }
-
-//init game on page load
-onPageLoad(() => gameReset(1));

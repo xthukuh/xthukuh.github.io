@@ -1,6 +1,6 @@
 //register mouse/touch press event handlers
 function onPressEvent(element, down_callback, up_callback){
-	let t, s;
+	let t, s, d;
 
 	//check element
 	if (!(element && 'function' === typeof element.addEventListener)){
@@ -23,21 +23,66 @@ function onPressEvent(element, down_callback, up_callback){
 
 	//press down handler
 	const down_handler = () => {
+		element.classList.add('active');
+		d = 1;
 		s = 500;
 		repeat();
 	};
 	
 	//press release (up) handler
 	const up_handler = () => {
+		element.classList.remove('active');
+		d = 0;
 		clearTimeout(t);
 		if ('function' === typeof up_callback) up_callback();
 	};
 
-	//register press down events
-	element.addEventListener('mousedown', down_handler, false);
-	element.addEventListener('ontouchstart', down_handler, false);
+	//elem no select
+	element.unselectable = 'on';
+	element.onselectstart = () => false;
 
-	//register press release (up) events
-	element.addEventListener('mouseup', up_handler, false);
-	element.addEventListener('ontouchend', up_handler, false);
+	//mouse events
+	element.addEventListener('mousedown', () => {
+		if (!d) down_handler();
+		return false;
+	}, false);
+	element.addEventListener('mouseup', () => {
+		if (d) up_handler();
+	}, false);
+
+	//touch events
+	element.addEventListener('touchstart', (e) => {
+		e.preventDefault();
+		if (!d) down_handler();
+	}, false);
+	element.addEventListener('touchend', (e) => {
+		e.preventDefault();
+		if (d) up_handler();
+	}, false);
+	element.addEventListener('touchmove', (e) => {
+		e.preventDefault();
+		let touch = e.touches[0];
+		let elem = document.elementFromPoint(touch.pageX, touch.pageY);
+		if (elem != element && d) up_handler();
+		else if (elem == element && !d) down_handler();
+	}, false);
+
+	//key events - keydown [enter, space]
+	element.addEventListener('keydown', (e) => {
+		if ([13, 32].includes(Number.parseInt(e.keyCode ? e.keyCode : e.which))){
+			e.preventDefault();
+			e.stopPropagation();
+			if (!d) down_handler();
+		}
+	}, false);
+
+	//key events - keyup [enter, space]
+	element.addEventListener('keyup', (e) => {
+		if ([13, 32].includes(Number.parseInt(e.keyCode ? e.keyCode : e.which))){
+			e.preventDefault();
+			e.stopPropagation();
+			if (d) up_handler();
+		}
+	}, false);
 }
+
