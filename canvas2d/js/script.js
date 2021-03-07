@@ -7,7 +7,7 @@ function canvasResize(){
 	let ww = window.innerWidth, wh = window.innerHeight, w, h;
 	if (ww < 575.98){
 		w = ww - 20;
-		h = Math.min(wh - 60 - 100, 400);
+		h = Math.min(wh - 60 - 100, 450);
 	}
 	else {
 		w = 500;
@@ -15,8 +15,7 @@ function canvasResize(){
 	}
 	canvas.width = w;
 	canvas.height = h;
-	console.log('canvas resize', canvas.width, canvas.height, ww, wh);
-
+	
 	//reset game
 	gameReset(1);
 }
@@ -27,4 +26,7 @@ function clearCtx(){
 }
 
 //init game on page load
-onPageLoad(() => canvasResize());
+onPageLoad(() => {
+	window.onresize = canvasResize;
+	canvasResize();
+});
