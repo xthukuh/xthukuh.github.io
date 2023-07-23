@@ -1,2 +1,3 @@
-# Lab
-My web app/scripts lab.
+# Thuku's Lab
+
+My github page for apps, scripts and experiments.
