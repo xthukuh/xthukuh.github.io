@@ -46,7 +46,7 @@
 		t = setTimeout(() => {
 			setPortfolio();
 			console.debug('....updatePortfolio');
-		}, 80);
+		}, 100);
 	};
 
 	document.addEventListener("DOMContentLoaded", function() {
