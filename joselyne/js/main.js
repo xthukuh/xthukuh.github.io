@@ -43,10 +43,7 @@
 	let t = undefined;
 	const updatePortfolio = () => {
 		clearTimeout(t);
-		t = setTimeout(() => {
-			setPortfolio();
-			console.debug('....updatePortfolio');
-		}, 100);
+		t = setTimeout(() => setPortfolio(), 100);
 	};
 
 	document.addEventListener("DOMContentLoaded", function() {

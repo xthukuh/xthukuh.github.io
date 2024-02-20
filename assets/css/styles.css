@@ -45,8 +45,10 @@ p {
 	margin: 16px 0;
 }
 ul {
-	list-style: disclosure-closed;
-	padding: 10px 0 0 15px;
+	/* list-style: disclosure-closed; */
+	list-style: none;
+	/* padding: 10px 0 0 15px; */
+	padding: 10px 0;
 	margin: 0;
 	border-top: 1px solid #ddd;
 }

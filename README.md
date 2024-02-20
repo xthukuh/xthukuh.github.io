@@ -1,3 +1,3 @@
 # Thuku's Lab
 
-My github page for apps, scripts and experiments.
+Hello! My Name is **Martin Thuku**. I make software! 😃
