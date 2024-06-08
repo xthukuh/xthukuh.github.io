@@ -342,6 +342,10 @@ $(document).ready(function() {
             $('.nav .nav__item a').removeClass('active');
             $(this).addClass('active');
             var currentTab = $(this).attr('href');
+						$('html, body').stop().animate({
+							'scrollTop': $('.content').offset().top
+						}, 900, 'swing');
+						console.debug('currentTab', currentTab);
             $('.content .tabcontent').hide();            
             $(currentTab).show();
             $portfolioMasonry.isotope ({
