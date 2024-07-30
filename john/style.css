@@ -1207,6 +1207,13 @@ li.timeline-event:hover .timeline-event-date {
 	margin-left: 50px;
 }
 
+.timeline-event-content b {
+	font-weight: 100;
+	font-style: unset;
+	margin-right: 5px;
+	font-size: small;
+}
+
 img.my-signature {
 	padding-top: 30px;
 	width: 215px;
