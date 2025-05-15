@@ -1,0 +1,31 @@
+{
+    "folders": [
+        {
+            "path": "."
+        }
+    ],
+    "settings": {
+        "workbench.colorCustomizations": {
+            // "activityBar.background": "#273026",
+            "titleBar.activeBackground": "#374335",
+            "titleBar.activeForeground": "#FAFBFA",
+            "titleBar.inactiveBackground": "#273026",
+            "titleBar.inactiveForeground": "#FAFBFA",
+        },
+        "editor.detectIndentation": false,
+        "editor.tabSize": 4,
+        "cSpell.words": [
+            "Appwiz",
+            "autohotkey",
+            "fancybox",
+            "Gatiaini",
+            "isure",
+            "Ithiru",
+            "Kagongo",
+            "Kandara",
+            "Njiiri",
+            "Safaricom",
+            "Strathmore"
+        ]
+    }
+}
