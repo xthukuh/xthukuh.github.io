@@ -9,8 +9,9 @@
             let html = ''
             + `<li data-date="${year}" class="event ${[...new Set((item.tags || '').split(',').map(v => v.trim()).filter(v => !!v))].join(' ')}">`
             + `<h3 class="lime">${item.title}</h3>`
-            + `<p>${item.description}</p>`;
-            if (item.institution) html += `<p><small>${item.institution}</small></p>`;
+            + (item.institution ? `<p class="institution"><small>${item.institution}</small></p>` : '')
+            + `<p>${item.description}</p>`
+            ;
             if (Array.isArray(item.gallery) && item.gallery.length) {
                 html += '<div class="gallery">';
                 for (const gallery_item of item.gallery) {

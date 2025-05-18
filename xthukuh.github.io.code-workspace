@@ -9,6 +9,9 @@
 			"activityBar.background": "#013600",
 			"titleBar.activeBackground": "#014C00",
 			"titleBar.activeForeground": "#EDFFED"
-		}
+		},
+		"editor.detectIndentation": false,
+		"editor.tabSize": 4,
+		"editor.insertSpaces": true,
 	}
 }

@@ -358,6 +358,10 @@ const PROFILE = {
                         caption: 'https://autohotkey.com',
                     },
                     {
+                        href: 'images/ahk/ahk-0.png',
+                        caption: 'AHK - Scripting Showcase',
+                    },
+                    {
                         href: 'images/ahk/bolt.png',
                         caption: 'Bolt - Act-isure automation tool',
                     },
@@ -421,9 +425,20 @@ const PROFILE = {
                 gallery: [],
             },
         ],
-        // Fiverr, Safaricom Appwiz - Startup Incubation, Manuals Pro - Claims processing, Resolution Insurance - Promotion Party
         2015: [
-            {title: 'Business Analyst', description: 'Pending details...', institution: 'Resolution Insurance'},
+            {
+                type: 'highlight',
+                title: 'Business Analyst',
+                description: 'Hit the ground running at resolution insurance.'
+                + ' We had just been hit by a ransomware and the IT department was busy doing manual file shadow restoration after successfully purging the virus from infected machines.'
+                + ' Wrote an AutoHotkey script to do that which sped up the disaster recovery process.'
+                + ' TODO: more details...',
+                institution: 'Resolution Insurance',
+                address: 'Nairobi, Kenya',
+                tags: 'adulthood,computer,work,experience',
+                rating: 5,
+                gallery: [],
+            },
         ],
         2016: [
             {title: 'Resolution Office', description: 'Pending details...'},
