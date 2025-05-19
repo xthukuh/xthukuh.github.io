@@ -235,7 +235,9 @@ const PROFILE = {
             {
                 type: 'highlight',
                 title: 'First Computer Access',
-                description: 'Vision Africa donated computers and books to the orphanage. I familiarized myself on the computers while interacting with Microsoft Windows 95, XP, MS Office and games. F1 help docs allowed me to learn while offline.',
+                description: 'Vision Africa donated computers and books to the orphanage.'
+                + ' I familiarized myself on the computers while interacting with Microsoft Windows 95, XP, MS Office and games.'
+                + ' F1 help docs allowed me to learn a lot about computing without internet connection.',
                 institution: 'Kandara Children\'s Home',
                 address: '4X4W+VHX, Kandara Town',
                 tags: 'childhood,orphanage,computer',
@@ -247,7 +249,8 @@ const PROFILE = {
             {
                 type: 'highlight',
                 title: 'Secondary School - Form 2',
-                description: 'Graduated from previous class. Participated in high school Science Congress competition (up to provincial level) where I had developed and pitched MS Access database management project.',
+                description: 'Graduated from previous class.'
+                + ' Participated in high school Science Congress competition (up to provincial level) where I had developed and pitched MS Access database management project.',
                 institution: 'Njiiri High School',
                 address: '6RGW+RP Gatiaini',
                 tags: 'childhood,education,secondary,school,computer',
@@ -259,7 +262,8 @@ const PROFILE = {
             {
                 type: 'highlight',
                 title: 'Secondary School - Form 3',
-                description: 'Graduated from previous class. Participated in high school Science Congress competition (up to provincial level) where I had developed and pitched MS Access database management project.',
+                description: 'Graduated from previous class.'
+                + ' Participated in high school Science Congress competition (up to provincial level) where I had developed and pitched MS Access database management project.',
                 institution: 'Njiiri High School',
                 address: '6RGW+RP Gatiaini',
                 tags: 'childhood,education,secondary,school,computer',
@@ -271,7 +275,8 @@ const PROFILE = {
             {
                 type: 'highlight',
                 title: 'Secondary School - Form 4',
-                description: 'Transferred and joined form 4 class of 2010 due to lack fees. Participated in high school Science Congress competition (up to provincial level) where I had developed and pitched MS Access database management project.',
+                description: 'Transferred and joined form 4 class of 2010 due to lack fees.'
+                + ' Participated in high school Science Congress competition (up to provincial level) where I had developed and pitched MS Access database management project.',
                 institution: 'St Peter\'s Kandara Boys High School',
                 address: '4X3W+72 Kandara Town',
                 tags: 'childhood,education,secondary,school,computer',
@@ -293,7 +298,8 @@ const PROFILE = {
             {
                 type: 'highlight',
                 title: 'Cyber Cafe Assistant',
-                description: 'Started low salary part-time work at a local cyber cafe offering typesetting, printing and occasionally assisting clients to access computer services. Polished my typing skills and speed.',
+                description: 'Started low salary part-time work at a local cyber cafe offering typesetting,'
+                + ' printing and occasionally assisting clients to access computer services. Polished my typing skills and speed.',
                 institution: null,
                 address: 'Kandara Town',
                 tags: 'adulthood,computer,work,experience',
@@ -303,7 +309,8 @@ const PROFILE = {
             {
                 type: 'highlight',
                 title: 'Equity Mobile Banking Agent',
-                description: 'Worked on low salary as an agent trained to assist Equity Bank clients register, deposit or withdraw funds through the mobile banking service. First time entrusted to handle low volume money transactions.',
+                description: 'Worked on low salary as an agent trained to assist Equity Bank clients register,'
+                + ' deposit or withdraw funds through the mobile banking service. First time entrusted to handle low volume money transactions.',
                 institution: null,
                 address: 'Kandara Town',
                 tags: 'adulthood,computer,work,experience',
@@ -325,7 +332,10 @@ const PROFILE = {
             {
                 type: 'highlight',
                 title: 'Graduated From Kandara Children\'s Home',
-                description: 'Vision Africa sponsored me to take CPA course which I later realized was not my career interest. I abandoned the course and started freelancing. Now as an adult, I officially left orphanage to be independent and started co-habiting with a high school friend in Kahawa West, Nairobi. I was able to afford my rent and upkeep from income made by creating and selling wordpress websites to private schools and local businesses.',
+                description: 'Vision Africa sponsored me to take CPA course which I later realized was not my career interest.'
+                + ' I abandoned the course and started freelancing. Now as an adult,'
+                + ' I officially left orphanage to be independent and started co-habiting with a high school friend in Kahawa West, Nairobi.'
+                + ' I was able to afford my rent and upkeep from income made by creating and selling wordpress websites to private schools and local businesses.',
                 institution: 'Kandara Children\'s Home',
                 address: '4X4W+VHX, Kandara Town',
                 tags: 'adulthood,orphanage,computer,work,experience',
@@ -335,7 +345,9 @@ const PROFILE = {
             {
                 type: 'highlight',
                 title: 'Resolution Insurance - Data Entry Clerk',
-                description: 'I joined the Resolution Insurance claims processing team. I was referred by an employee who knew my computer skills were perfect the job description. The main qualification for the role was computer proficiency and did not need any academic papers such as graduation certificates.',
+                description: 'I joined the Resolution Insurance claims processing team.'
+                + ' I was referred by an employee who knew my computer skills were perfect the job description.'
+                + ' The main qualification for the role was computer proficiency and did not need any academic papers such as graduation certificates.',
                 institution: 'Resolution Insurance',
                 address: 'Nairobi, Kenya',
                 tags: 'adulthood,computer,work,experience',
@@ -347,7 +359,10 @@ const PROFILE = {
             {
                 type: 'highlight',
                 title: 'AutoHotkey Scripting - Enhanced Data Entry',
-                description: 'While in my data entry role at Resolution Insurance, I figured out that most repetitive actions could be automated. In my research, I found the best macro automation scripting language AutoHotkey. It enabled great control when replaying user input such as window detection and activation. I shared the tool with colleagues and boosted claims processing performance.',
+                description: 'While in my data entry role at Resolution Insurance, I figured out that most repetitive actions could be automated.'
+                + ' In my research, I found the best macro automation scripting language AutoHotkey.'
+                + ' It enabled great control when replaying user input such as window detection and activation.'
+                + ' I shared the tool with colleagues and boosted claims processing performance.',
                 institution: 'Resolution Insurance',
                 address: 'Nairobi, Kenya',
                 tags: 'adulthood,computer,work,experience',
@@ -379,22 +394,30 @@ const PROFILE = {
                     },
                 ],
             },
-        ],
-        2014: [
             {
                 type: 'highlight',
                 title: 'Safaricom Appwiz - Startup Incubation',
-                description: 'I participated in the 2014 Safaricom Appwiz competition. As a team of 3 developers we made an entry into the competition where we had developed an auto-repair android application. We also qualified for a three month startup incubation where we experts were able to share their knowledge on how to start and manage a successful startup company.',
+                description: 'I participated in the 2014 Safaricom Appwiz competition.'
+                + ' As a team of 3 developers we made an entry into the competition where we had developed an auto-repair android application.'
+                + ' We also qualified for a three month startup incubation where we experts were able to share their knowledge on how to start and manage a successful startup company.',
                 institution: 'Safaricom + ILab Africa, Strathmore University',
                 address: 'Nairobi, Kenya',
                 tags: 'adulthood,computer,work,education,experience',
                 rating: 1,
                 gallery: [],
             },
+        ],
+        2014: [
             {
                 type: 'highlight',
                 title: 'Manuals Pro - Claims Processing System',
-                description: 'With the assistance of <b>Jeremy Sambai</b> a work colleague who at the time was handling manual claims processing. I developed "Manuals Pro" windows application using AutoHotkey and MySQL database. It would serve as a better software alternative for processing edge-case claims; claims that could not be processed via main system due to client policy issues among other reason. Manual claims were previously processed using excel documents which is prone to data inconsistencies and caused a lot of reconciliation issues and introduced room for fraud. Manuals Pro solution introduced centralized database, input validations, standard pick lists, audit logs and access control for more reliable claims processing.',
+                description: 'With the assistance of <b>Jeremy Sambai</b> a work colleague who at the time was handling manual claims processing.'
+                + ' I developed "Manuals Pro" windows application using AutoHotkey and MySQL database.'
+                + ' It would serve as a better software alternative for processing edge-case claims;'
+                + ' claims that could not be processed via main system due to client policy issues among other reason.'
+                + ' Manual claims were previously processed using excel documents which is prone to data inconsistencies and caused a'
+                + ' lot of reconciliation issues and introduced room for fraud. Manuals Pro solution introduced centralized database,'
+                + ' input validations, standard pick lists, audit logs and access control for more reliable claims processing.',
                 institution: 'Resolution Insurance',
                 address: 'Nairobi, Kenya',
                 tags: 'adulthood,computer,work,experience',
@@ -417,7 +440,9 @@ const PROFILE = {
             {
                 type: 'highlight',
                 title: 'Assistance Business Analyst - Promotion',
-                description: 'At the end of 2014 year party, the then CEO congratulated <b>Jeremy Sambai</b> and I for our "Manuals Pro" solution. He gave us a job promotion to the new role "Assistance Business Analyst" moving us from Claims to IT department. Among other roles, we were tasked to implement the solution across all business branches and play crucial role in streamlining business processes in all departments.',
+                description: 'At the end of 2014 year party, the then CEO congratulated <b>Jeremy Sambai</b> and I for our "Manuals Pro" solution.'
+                + ' He gave us a job promotion to the new role "Assistance Business Analyst" moving us from Claims to IT department.'
+                + ' Among other roles, we were tasked to implement the solution across all business branches and play crucial role in streamlining business processes in all departments.',
                 institution: 'Resolution Insurance',
                 address: 'Nairobi, Kenya',
                 tags: 'adulthood,computer,work,experience',
@@ -442,6 +467,8 @@ const PROFILE = {
         ],
         2016: [
             {title: 'Resolution Office', description: 'Pending details...'},
+            // 2016 - Analytics & Data Visualization - Certification for software training
+            // 2016 - ITIL Foundation Trciining
         ],
         2017: [
             {title: 'EkoBiashara', description: 'Pending details...'},
