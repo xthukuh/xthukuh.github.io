@@ -457,16 +457,31 @@ const PROFILE = {
                 description: 'Hit the ground running at resolution insurance.'
                 + ' We had just been hit by a ransomware and the IT department was busy doing manual file shadow restoration after successfully purging the virus from infected machines.'
                 + ' Wrote an AutoHotkey script to do that which sped up the disaster recovery process.'
-                + ' TODO: more details...',
+                + ' In efforts to improve departmental efficiency, I created asset tracking too using AHK.'
+                + ' Worked closely to automate business processes in sales and underwriting before Salesforce CRM was adopted.'
+                + ' Created EasyTrack an house solution that simplified tracking of new and existing business insurance across sales and underwriting stages.'
+                ,
                 institution: 'Resolution Insurance',
                 address: 'Nairobi, Kenya',
                 tags: 'adulthood,computer,work,experience',
-                rating: 5,
+                rating: 3,
                 gallery: [],
             },
         ],
         2016: [
-            {title: 'Resolution Office', description: 'Pending details...'},
+            {
+                type: 'highlight',
+                title: 'Analytics & Data Visualization - Sponsored Training',
+                description: 'The company sponsored training to master Qlick View software and data analysis using '
+                + ' //FIXME: more details...'
+                ,
+                institution: 'Resolution Insurance',
+                address: 'Nairobi, Kenya',
+                tags: 'adulthood,computer,work,experience',
+                rating: 2,
+                gallery: [],
+            },
+            // {title: 'Resolution Office', description: 'Pending details...'},
             // 2016 - Analytics & Data Visualization - Certification for software training
             // 2016 - ITIL Foundation Trciining
         ],
