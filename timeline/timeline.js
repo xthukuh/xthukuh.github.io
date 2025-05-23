@@ -218,7 +218,20 @@ const PROFILE = {
                 address: '4X4W+VHX, Kandara Town',
                 tags: 'childhood,orphanage,talent',
                 rating: 1,
-                gallery: [],
+                gallery: [
+									{
+										href: 'images/kch/art-00.jpg',
+										caption: 'photo',
+									},
+									{
+										href: 'images/kch/art-01.jpg',
+										caption: 'photo',
+									},
+									{
+										href: 'images/kch/art-02.jpg',
+										caption: 'photo',
+									},
+								],
             },
         ],
         2007: [
@@ -404,7 +417,36 @@ const PROFILE = {
                 address: 'Nairobi, Kenya',
                 tags: 'adulthood,computer,work,education,experience',
                 rating: 1,
-                gallery: [],
+                gallery: [
+									{
+										href: 'images/appwiz/img-00.jpg',
+										caption: 'Photo',
+									},
+									{
+										href: 'images/appwiz/img-001.jpg',
+										caption: 'Photo',
+									},
+									{
+										href: 'images/appwiz/img-01.jpg',
+										caption: 'Photo',
+									},
+									{
+										href: 'images/appwiz/img-02.jpg',
+										caption: 'Photo',
+									},
+									{
+										href: 'images/appwiz/img-03.jpg',
+										caption: 'Photo',
+									},
+									{
+										href: 'images/appwiz/img-04.jpg',
+										caption: 'Photo',
+									},
+									{
+										href: 'images/appwiz/img-05.jpg',
+										caption: 'Photo',
+									},
+								],
             },
         ],
         2014: [
@@ -492,7 +534,16 @@ const PROFILE = {
             {title: 'Tupange', description: 'Pending details...'},
         ],
         2019: [
-            {title: 'Freelancing, Fiverr, Househelps, Surebets', description: 'Pending details...'},
+            {
+							title: 'Freelancing, Fiverr, Househelps, Surebets',
+							description: 'Pending details...',
+							gallery: [
+								{
+										href: 'images/freelance/fiverr.png',
+										caption: 'https://www.fiverr.com/martinthuku',
+								},
+							],
+						},
         ],
         2020: [
             {title: 'Montana Root Applications', description: 'Pending details...'},
@@ -507,7 +558,16 @@ const PROFILE = {
             {title: 'BlueCPG, Salesforce UpEnergy', description: 'Pending details...'},
         ],
         2024: [
-            {title: 'TrueBlue, Salesforce MESPT, Ashut Engineering', description: 'Pending details...'},
+            {
+							title: 'TrueBlue, Salesforce MESPT, Ashut Engineering',
+							description: 'Pending details...',
+							gallery: [
+								{
+										href: 'images/blue/trueblue.png',
+										caption: 'https://blueconsulting.co.ke/solutions/trueblue-app/',
+								},
+							],
+						},
         ],
         2025: [
             {title: 'TrueBlue CRM', description: 'Pending details...'},

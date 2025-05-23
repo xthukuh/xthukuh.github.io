@@ -2,7 +2,8 @@
     const timeline = document.querySelector('ul.timeline');
     const loading = document.querySelector('.loading');
     if (!timeline) throw  new Error('Missing timeline element.');
-    const timeline_entries = Object.entries(PROFILE.timeline).reverse();
+    const timeline_entries = Object.entries(PROFILE.timeline) //.reverse()
+		;
     let timeline_html = '';
     for (const [year, items] of timeline_entries) {
         for (const item of items) {
@@ -16,7 +17,7 @@
                 html += '<div class="gallery">';
                 for (const gallery_item of item.gallery) {
                     let data_caption = gallery_item.caption;
-                    if (/^https?:\/\//.test(data_caption)) data_caption = `<a href='${data_caption}' target='_blank'>autohotkey.com</a>`;
+                    if (/^https?:\/\//.test(data_caption)) data_caption = `<a href='${data_caption}' target='_blank'>${data_caption}</a>`;
                     html += `<a href="${gallery_item.href}" data-fancybox="gallery" data-caption="${data_caption}">`;
                     html += `<img class="img-fluid" src="${gallery_item.href}" title="${gallery_item.caption}" />`;
                     html += `</a>`;
