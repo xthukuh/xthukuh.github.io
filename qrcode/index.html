@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>QR & Bar Code Generator</title>
+	<script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/js/JsBarcode.all.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="wrapper">
+
+		<div class="title">
+			<h1>Code Generator</h1>
+			<p>Create customized QR codes and barcodes for your needs</p>
+		</div>
+
+		<div class="content">
+			
+			<!-- preview -->
+			<div class="preview-wrapper">
+				<div class="preview">
+					<div id="code-preview">
+						<div class="preview-placeholder">
+							<i class="fas fa-qrcode" style="font-size: 60px; opacity: 0.7; margin-bottom: 15px;"></i>
+							<p>Your code will appear here</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- control -->
+			<div class="control-section">				
+				<div class="input-section card">
+					<h2><i class="fas fa-pencil-alt"></i> Data Input</h2>
+					<textarea id="data-input" placeholder="Enter text or URL to encode"></textarea>
+
+					<div class="code-type">
+						<label>
+							<input type="radio" name="code-type" value="qr" checked>
+							<i class="fas fa-qrcode"></i> QR Code
+						</label>
+						<label>
+							<input type="radio" name="code-type" value="bar">
+							<i class="fas fa-barcode"></i> Bar Code
+						</label>
+					</div>
+
+					<div class="button-group">
+						<button id="generate-btn">
+							<i class="fas fa-cog"></i> Generate Code
+						</button>
+						<button id="clear-btn">
+							<i class="fas fa-trash-alt"></i> Clear
+						</button>
+					</div>
+				</div>
+
+				<div class="config-panel card">
+					<h2><i class="fas fa-sliders-h"></i> Configuration</h2>
+
+					<div class="config-group">
+						<h3><i class="fas fa-qrcode"></i> QR Code Settings</h3>
+						<div class="form-group">
+							<label for="qr-size">Size</label>
+							<div class="range-input">
+								<input type="range" id="qr-size" min="100" max="500" value="220">
+								<span id="qr-size-value">220</span> px
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="qr-margin">Margin</label>
+							<div class="range-input">
+								<input type="range" id="qr-margin" min="0" max="20" value="2">
+								<span id="qr-margin-value">2</span>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="qr-color">Color</label>
+							<div class="color-input">
+								<input type="color" id="qr-color-picker" value="#000000">
+								<input type="text" id="qr-color" value="#000000">
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="qr-bg-color">Background Color</label>
+							<div class="color-input">
+								<input type="color" id="qr-bg-color-picker" value="#ffffff">
+								<input type="text" id="qr-bg-color" value="#ffffff">
+							</div>
+						</div>
+					</div>
+
+					<div class="config-group">
+						<h3><i class="fas fa-barcode"></i> Bar Code Settings</h3>
+						<div class="form-group">
+							<label for="bar-format">Format</label>
+							<select id="bar-format">
+								<option value="CODE128">CODE128</option>
+								<option value="EAN13">EAN13</option>
+								<option value="UPC">UPC</option>
+								<option value="CODE39">CODE39</option>
+							</select>
+						</div>
+
+						<div class="form-group">
+							<label for="bar-height">Height</label>
+							<div class="range-input">
+								<input type="range" id="bar-height" min="20" max="200" value="100">
+								<span id="bar-height-value">100</span> px
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="bar-width">Line Width</label>
+							<div class="range-input">
+								<input type="range" id="bar-width" min="1" max="3" step="0.1" value="2">
+								<span id="bar-width-value">2</span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="export-section">
+					<div class="export-dropdown">
+						<button class="export-btn">
+							<i class="fas fa-download"></i> Export Code
+						</button>
+						<div class="dropdown-content">
+							<button id="export-svg">
+								<i class="fas fa-file-image"></i> SVG
+							</button>
+							<button id="export-png">
+								<i class="fas fa-file-image"></i> PNG
+							</button>
+							<button id="export-jpg">
+								<i class="fas fa-file-image"></i> JPG
+							</button>
+						</div>
+					</div>
+					<p class="info-text">Select format and download your code</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="script.js"></script>
+</body>
+</html>
