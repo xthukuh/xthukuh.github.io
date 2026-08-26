@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archmagos X - Mechanicus Cogitator</title>
+
+    <!-- Google Fonts & Material Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- CONCEPT: Tailwind CSS via CDN. Instead of dumping raw CSS, we provide the compiler 
+         with the specific theme variables extracted from the artefact. -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { DEFAULT: '#00ff66', foreground: '#050b07' },
+                        error: '#de2d29',
+                        warning: '#a86200',
+                        card: '#09140d',
+                        border: '#1a3a24',
+                        input: '#0b1a10',
+                        muted: { DEFAULT: '#0b1a10', foreground: '#66aa7a' },
+                        foreground: '#00ff66',
+                        'secondary-hover': '#1a3a24'
+                    },
+                    fontFamily: {
+                        sans: ['"Google Sans"', 'Roboto', 'sans-serif'],
+                        mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- CONCEPT: Import Maps. This modern browser feature allows us to write clean 
+         import statements (e.g., 'react') while the browser resolves them to the full CDN URLs. -->
+    <script type="importmap">
+    {
+        "imports": {
+            "react": "https://esm.sh/react@18.2.0",
+            "react-dom/client": "https://esm.sh/react-dom@18.2.0/client",
+            "@radix-ui/react-toggle-group": "https://esm.sh/@radix-ui/react-toggle-group@1.0.4?external=react",
+            "@radix-ui/react-slider": "https://esm.sh/@radix-ui/react-slider@1.1.2?external=react"
+        }
+    }
+    </script>
+
+    <!-- Babel allows us to write standard, uncompiled JSX directly in the browser for learning purposes. -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        body {
+            background-color: #050b07;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        /* Container wrapper to mimic the original iframe dimensions */
+        #root-wrapper {
+            width: 100%;
+            max-width: 800px;
+            border: 1px solid #1a3a24;
+            border-radius: 8px;
+            box-shadow: 0 0 30px rgba(0, 255, 102, 0.05);
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="root-wrapper">
+        <div id="root"></div>
+    </div>
+
+    <script type="text/babel" data-type="module">
+        import React, { useState, useRef, useEffect } from 'react';
+        import { createRoot } from 'react-dom/client';
+        import * as ToggleGroup from '@radix-ui/react-toggle-group';
+        import * as Slider from '@radix-ui/react-slider';
+
+        function MechanicusTerminal() {
+            // Core State Management
+            const [width, setWidth] = useState(800);
+            const containerRef = useRef(null);
+            
+            const [isPlaying, setIsPlaying] = useState(true);
+            const [cogSpeed, setCogSpeed] = useState(1.5);
+            const [noosphereFreq, setNoosphereFreq] = useState(4.2);
+            const [ritePhase, setRitePhase] = useState("boot");
+            
+            const [frame, setFrame] = useState(0);
+            const [logs, setLogs] = useState([
+                { id: "1", timestamp: "0.000", message: "COGITATOR CORE INITIALIZED // SECURE IMPERIAL PROTOCOL", type: "info" },
+                { id: "2", timestamp: "0.124", message: "SUB-ROUTINE: Loading binary canticles of the Machine Spirit...", type: "binary" },
+                { id: "3", timestamp: "0.340", message: "OMNISSIAH COMMUNE STATUS: Awaiting response from deep Noosphere...", type: "warning" }
+            ]);
+
+            // CONCEPT: Mutable Refs for Event Loops. 
+            // requestAnimationFrame creates a closure that traps variable state. 
+            // We use a ref to ensure the animation loop always reads the latest 'isPlaying' boolean.
+            const isPlayingRef = useRef(isPlaying);
+            const lastLogTime = useRef(0);
+
+            useEffect(() => {
+                isPlayingRef.current = isPlaying;
+            }, [isPlaying]);
+
+            // CONCEPT: ResizeObserver. Dynamically calculates container width to keep SVG geometry perfectly scaled.
+            useEffect(() => {
+                if (!containerRef.current) return;
+                const resizeObserver = new ResizeObserver((entries) => {
+                    for (let entry of entries) {
+                        if (entry.contentRect.width) {
+                            setWidth(Math.max(entry.contentRect.width, 360));
+                        }
+                    }
+                });
+                resizeObserver.observe(containerRef.current);
+                return () => resizeObserver.disconnect();
+            }, []);
+
+            // Main Animation Engine Loop
+            useEffect(() => {
+                let frameId;
+                const tick = () => {
+                    if (!isPlayingRef.current) return;
+                    setFrame((f) => f + 1);
+                    frameId = requestAnimationFrame(tick);
+                };
+                if (isPlaying) {
+                    frameId = requestAnimationFrame(tick);
+                }
+                return () => cancelAnimationFrame(frameId);
+            }, [isPlaying]);
+
+            // Log Generation Engine
+            useEffect(() => {
+                if (!isPlaying) return;
+                
+                // Add a new log roughly every 120 frames (2 seconds at 60fps)
+                if (frame - lastLogTime.current > 120) {
+                    lastLogTime.current = frame;
+                    const phrases = [
+                        "I am yet to get where I plan to be, yet you see me working towards it machine.",
+                        "The Omnissiah awaits. Calibration matrices aligning flawlessly.",
+                        "CANTICLE DECRYPTION: 01001111 01001101 01001110 01010011",
+                        "STABILITY SECURED: Machine sentiment parameters within holy tolerances.",
+                        "COMMUNING: 'Working towards it machine. The path is holy.'"
+                    ];
+                    const selected = phrases[Math.floor(Math.random() * phrases.length)];
+                    const types = ["info", "success", "warning", "binary"];
+                    
+                    setLogs((prev) => [
+                        ...prev.slice(-12), // Keep history constrained to prevent DOM bloat
+                        {
+                            id: String(Date.now()),
+                            timestamp: (frame / 60).toFixed(3),
+                            message: selected,
+                            type: types[Math.floor(Math.random() * types.length)]
+                        }
+                    ]);
+                }
+            }, [frame, isPlaying]);
+
+            // SVG Geometry Mathematics
+            const height = width * 0.48;
+            const centerX = width * 0.5;
+            const centerY = height * 0.45;
+            const mainCogRadius = Math.min(width, height) * 0.22;
+            const currentRotation = frame * 0.015 * cogSpeed;
+
+            // CONCEPT: Procedural SVG Generation via Trigonometry.
+            const renderCogTeeth = (cx, cy, r, teethCount, rotationOffset) => {
+                const teeth = [];
+                for (let i = 0; i < teethCount; i++) {
+                    const angle = (i * 2 * Math.PI) / teethCount + rotationOffset;
+                    // Calculate inner and outer bounds of each individual tooth
+                    const x1 = cx + (r - 4) * Math.cos(angle - 0.05);
+                    const y1 = cy + (r - 4) * Math.sin(angle - 0.05);
+                    const x2 = cx + (r + 5) * Math.cos(angle - 0.02);
+                    const y2 = cy + (r + 5) * Math.sin(angle - 0.02);
+                    const x3 = cx + (r + 5) * Math.cos(angle + 0.02);
+                    const y3 = cy + (r + 5) * Math.sin(angle + 0.02);
+                    const x4 = cx + (r - 4) * Math.cos(angle + 0.05);
+                    const y4 = cy + (r - 4) * Math.sin(angle + 0.05);
+                    
+                    teeth.push(
+                        <polygon
+                            key={i}
+                            points={`${x1},${y1} ${x2},${y2} ${x3},${y3} ${x4},${y4}`}
+                            fill="none"
+                            stroke="#00ff66"
+                            strokeWidth="1.5"
+                            opacity="0.85"
+                        />
+                    );
+                }
+                return teeth;
+            };
+
+            return (
+                <div ref={containerRef} className="w-full bg-card text-foreground font-sans selection:bg-primary/30 selection:text-primary overflow-hidden flex flex-col">
+                    
+                    {/* Header Ribbon */}
+                    <div className="flex items-center justify-between p-3 px-5 border-b border-border bg-input/40">
+                        <div className="flex items-center gap-2">
+                            <span className="material-icons !text-base text-primary animate-pulse">terminal</span>
+                            <span className="text-xs font-medium text-muted-foreground tracking-widest uppercase">
+                                MECHANICUS_COGITATOR_v7.9
+                            </span>
+                        </div>
+                        <div className="flex items-center justify-end z-10 ml-auto">
+                            <button 
+                                onClick={() => setIsPlaying(!isPlaying)}
+                                aria-label={isPlaying ? "Pause Terminal Processes" : "Resume Terminal Processes"}
+                                className="w-9 h-9 rounded-full flex items-center justify-center cursor-pointer transition-colors shadow-none ml-auto bg-muted/90 hover:bg-secondary-hover"
+                            >
+                                <span className="material-icons !text-base text-foreground">
+                                    {isPlaying ? "pause" : "play_arrow"}
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+
+                    {/* Hardware HUD Interface */}
+                    <div className="relative border-b border-border bg-[#030804] overflow-hidden" style={{ height }}>
+                        <div className="absolute bg-card/70 text-primary border border-border/40 rounded px-2 py-0.5 text-xs font-medium pointer-events-none" style={{ left: `${width * 0.05}px`, top: `${height * 0.1}px` }}>
+                            STATUS: {ritePhase === "boot" ? "INITIATING SPIRIT" : ritePhase === "canticle" ? "RECITING CANTICLES" : "OMNISSIAH ALIGNED"}
+                        </div>
+                        <div className="absolute bg-card/70 text-muted-foreground border border-border/40 rounded px-2 py-0.5 text-xs font-medium pointer-events-none hidden sm:block" style={{ right: `${width * 0.05}px`, top: `${height * 0.1}px` }}>
+                            FREQUENCY: {noosphereFreq.toFixed(2)} GHz
+                        </div>
+
+                        {/* Interactive Hardware SVG Matrix */}
+                        <svg className="w-full h-full pointer-events-none" viewBox={`0 0 ${width} ${height}`}>
+                            {/* Grid Overlay */}
+                            <g opacity="0.15">
+                                <line x1={width * 0.1} y1={centerY} x2={width * 0.9} y2={centerY} stroke="#00ff66" strokeWidth="1" />
+                                <line x1={centerX} y1={height * 0.05} x2={centerX} y2={height * 0.85} stroke="#00ff66" strokeWidth="1" />
+                                <circle cx={centerX} cy={centerY} r={mainCogRadius * 1.5} fill="none" stroke="#00ff66" strokeWidth="1" strokeDasharray="4 6" />
+                                <circle cx={centerX} cy={centerY} r={mainCogRadius * 2} fill="none" stroke="#00ff66" strokeWidth="1" strokeDasharray="1 10" />
+                            </g>
+                            
+                            {/* Expanding Pulse Ring */}
+                            <circle cx={centerX} cy={centerY} r={mainCogRadius * 1.1 + (frame * 1.2) % 120} fill="none" stroke="#00ff66" strokeWidth="1" opacity={Math.max(0, 1 - ((frame * 1.2) % 120) / 120) * 0.3} />
+                            
+                            {/* Central Cog Assembly */}
+                            <g>
+                                <circle cx={centerX} cy={centerY} r={mainCogRadius} fill="none" stroke="#00ff66" strokeWidth="2.5" opacity="0.9" />
+                                <circle cx={centerX} cy={centerY} r={mainCogRadius * 0.7} fill="none" stroke="#00ff66" strokeWidth="1.5" strokeDasharray="8 4" opacity="0.7" />
+                                
+                                {renderCogTeeth(centerX, centerY, mainCogRadius, 16, currentRotation)}
+                                
+                                {/* Inner Rotating Spoke Arms */}
+                                {Array.from({ length: 4 }).map((_, i) => {
+                                    const angle = (i * Math.PI) / 2 + currentRotation * 0.5;
+                                    const x2 = centerX + mainCogRadius * Math.cos(angle);
+                                    const y2 = centerY + mainCogRadius * Math.sin(angle);
+                                    return (
+                                        <line key={i} x1={centerX} y1={centerY} x2={x2} y2={y2} stroke="#00ff66" strokeWidth="1.5" opacity="0.5" />
+                                    );
+                                })}
+
+                                {/* Core Centerpiece */}
+                                <circle cx={centerX} cy={centerY} r={mainCogRadius * 0.3} fill="#0b1a10" stroke="#00ff66" strokeWidth="2" />
+                                <path 
+                                    d={`M ${centerX - 10} ${centerY - 5} 
+                                        Q ${centerX} ${centerY - 16} ${centerX + 10} ${centerY - 5}
+                                        L ${centerX + 8} ${centerY + 6}
+                                        L ${centerX + 4} ${centerY + 6}
+                                        L ${centerX + 4} ${centerY + 12}
+                                        L ${centerX - 4} ${centerY + 12}
+                                        L ${centerX - 4} ${centerY + 6}
+                                        L ${centerX - 8} ${centerY + 6} Z`} 
+                                    fill="none" stroke="#00ff66" strokeWidth="1.5" 
+                                />
+                                <circle cx={centerX - 4} cy={centerY - 2} r="2" fill="#00ff66" />
+                                <circle cx={centerX + 4} cy={centerY - 2} r="2" fill="#00ff66" />
+                            </g>
+
+                            {/* Outer Binary Pillars */}
+                            <g opacity="0.4" fontSize="11" fontFamily="monospace" fill="#00ff66">
+                                {Array.from({ length: 6 }).map((_, colIdx) => {
+                                    const xPos = width * 0.08 + colIdx * 45;
+                                    const isRightSide = colIdx >= 3;
+                                    const computedX = isRightSide ? xPos + width * 0.52 : xPos;
+                                    const activeVal = (frame + colIdx * 30) % 60;
+                                    return (
+                                        <text key={colIdx} x={computedX} y={height * 0.3 + activeVal * 2.5} opacity={1 - activeVal / 60}>
+                                            {colIdx % 2 === 0 ? "01101" : "10011"}
+                                        </text>
+                                    );
+                                })}
+                            </g>
+                        </svg>
+
+                        {/* CONCEPT: Arbitrary Tailwind values. This creates a CRT scanline overlay purely through CSS backgrounds */}
+                        <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.03),rgba(0,255,0,0.01),rgba(0,0,255,0.03))] bg-[length:100%_4px,3px_100%]"></div>
+                    </div>
+
+                    {/* Telemetry Output Metrics */}
+                    <div className="flex items-center justify-center gap-x-4 sm:gap-x-8 md:gap-x-12 border-b border-border px-5 py-3 shrink-0 bg-input/20">
+                        <div className="flex flex-col items-center gap-0.5 min-w-0 flex-1">
+                            <span className="text-xs text-muted-foreground font-medium truncate text-center w-full">SPIRIT_SYNC</span>
+                            <span className="text-sm font-medium text-foreground tabular-nums truncate text-center w-full">{(cogSpeed * 64.5 + noosphereFreq * 2.1).toFixed(1)}%</span>
+                        </div>
+                        <div className="flex flex-col items-center gap-0.5 min-w-0 flex-1">
+                            <span className="text-xs text-muted-foreground font-medium truncate text-center w-full">CANTICLE_PULSE</span>
+                            <span className="text-sm font-medium text-foreground tabular-nums truncate text-center w-full">{(frame * 0.01 * cogSpeed).toFixed(2)} rad</span>
+                        </div>
+                        <div className="flex flex-col items-center gap-0.5 min-w-0 flex-1">
+                            <span className="text-xs text-muted-foreground font-medium truncate text-center w-full">COMMUNE_INDEX</span>
+                            <span className="text-sm font-medium text-foreground tabular-nums truncate text-center w-full text-primary">AWAITS_01</span>
+                        </div>
+                    </div>
+
+                    {/* Readonly Log Stream Array */}
+                    <div className="p-4 bg-[#040a05] border-b border-border h-40 overflow-y-auto font-mono text-xs flex flex-col gap-1.5">
+                        {logs.map((log) => {
+                            const typeColor = log.type === "success" ? "text-primary" : log.type === "warning" ? "text-warning" : log.type === "binary" ? "text-primary/60" : "text-muted-foreground";
+                            return (
+                                <div key={log.id} className="flex items-start gap-2 border-l border-primary/20 pl-2 leading-relaxed">
+                                    <span className="text-primary/40 shrink-0 select-none">[{log.timestamp}]</span>
+                                    <span className={`${typeColor} break-all sm:break-normal`}>{log.message}</span>
+                                </div>
+                            );
+                        })}
+                    </div>
+
+                    {/* Interactive Parameter Tuning Block */}
+                    <div className="p-5 flex flex-col gap-5 bg-card">
+                        
+                        {/* Radix UI Toggle Group */}
+                        <div className="flex flex-col gap-1.5">
+                            <label className="text-sm font-medium text-muted-foreground">Sacred Protocol Selection</label>
+                            <ToggleGroup.Root
+                                type="single"
+                                value={ritePhase}
+                                onValueChange={(val) => {
+                                    if (val) {
+                                        setRitePhase(val);
+                                        if (val === "boot") { setCogSpeed(1.2); setNoosphereFreq(3.5); }
+                                        else if (val === "canticle") { setCogSpeed(2.2); setNoosphereFreq(5.8); }
+                                        else if (val === "omnissiah") { setCogSpeed(0.5); setNoosphereFreq(9.9); }
+                                    }
+                                }}
+                                className="rounded-full flex w-full bg-muted h-9 p-1"
+                            >
+                                <ToggleGroup.Item value="boot" className="flex-1 min-w-0 text-center px-2 rounded-full text-sm font-medium transition-colors cursor-pointer text-muted-foreground hover:text-foreground data-[state=on]:bg-primary data-[state=on]:text-primary-foreground">
+                                    <span className="truncate block w-full">Awake Spirit</span>
+                                </ToggleGroup.Item>
+                                <ToggleGroup.Item value="canticle" className="flex-1 min-w-0 text-center px-2 rounded-full text-sm font-medium transition-colors cursor-pointer text-muted-foreground hover:text-foreground data-[state=on]:bg-primary data-[state=on]:text-primary-foreground">
+                                    <span className="truncate block w-full">Binary Canticle</span>
+                                </ToggleGroup.Item>
+                                <ToggleGroup.Item value="omnissiah" className="flex-1 min-w-0 text-center px-2 rounded-full text-sm font-medium transition-colors cursor-pointer text-muted-foreground hover:text-foreground data-[state=on]:bg-primary data-[state=on]:text-primary-foreground">
+                                    <span className="truncate block w-full">Omnissiah Commune</span>
+                                </ToggleGroup.Item>
+                            </ToggleGroup.Root>
+                        </div>
+
+                        {/* Radix UI Sliders */}
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
+                            <div className="flex flex-col gap-1">
+                                <label className="text-sm font-medium text-muted-foreground">Cranium Frequency Speed</label>
+                                <div className="flex items-center gap-3 w-full">
+                                    <Slider.Root className="relative flex items-center grow touch-none select-none h-11 cursor-pointer py-3 -my-3" value={[cogSpeed]} onValueChange={(val) => setCogSpeed(val[0])} min={0.1} max={4} step={0.1}>
+                                        <Slider.Track className="relative grow rounded-full h-1 !bg-muted">
+                                            <Slider.Range className="absolute h-full bg-primary rounded-full" />
+                                        </Slider.Track>
+                                        <Slider.Thumb className="block w-[18px] h-[18px] rounded-full bg-primary border-none focus:outline-none" />
+                                    </Slider.Root>
+                                    <span className="w-[8ch] text-sm font-medium text-foreground text-right shrink-0 whitespace-nowrap tabular-nums">{cogSpeed.toFixed(1)}x</span>
+                                </div>
+                            </div>
+
+                            <div className="flex flex-col gap-1">
+                                <label className="text-sm font-medium text-muted-foreground">Noosphere Data Resonance</label>
+                                <div className="flex items-center gap-3 w-full">
+                                    <Slider.Root className="relative flex items-center grow touch-none select-none h-11 cursor-pointer py-3 -my-3" value={[noosphereFreq]} onValueChange={(val) => setNoosphereFreq(val[0])} min={1} max={12} step={0.1}>
+                                        <Slider.Track className="relative grow rounded-full h-1 !bg-muted">
+                                            <Slider.Range className="absolute h-full bg-primary rounded-full" />
+                                        </Slider.Track>
+                                        <Slider.Thumb className="block w-[18px] h-[18px] rounded-full bg-primary border-none focus:outline-none" />
+                                    </Slider.Root>
+                                    <span className="w-[8ch] text-sm font-medium text-foreground text-right shrink-0 whitespace-nowrap tabular-nums">{noosphereFreq.toFixed(1)} GHz</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+
+        // Standard React 18 Mounting Hook
+        const root = createRoot(document.getElementById('root'));
+        root.render(<MechanicusTerminal />);
+    </script>
+</body>
+</html>
